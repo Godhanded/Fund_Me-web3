@@ -14,6 +14,9 @@ contract goFundMe {
     uint256 public amountNeeded;
     uint256 public totalReceived;
 
+    string public Name;
+
+
     struct funders {
         address funder;
         uint amount;
@@ -98,9 +101,15 @@ contract goFundMe {
         return fundersList;
     }
 
-    function initializer(address _owner, uint256 _amount) external onlyFactory 
+    function name() external view returns(string memory)
+    {
+        return Name;
+    }
+
+    function initializer(address _owner, uint256 _amount,string calldata _name) external onlyFactory 
     {
         owner = _owner;
         amountNeeded = _amount;
+        Name = _name;
     }
 }
