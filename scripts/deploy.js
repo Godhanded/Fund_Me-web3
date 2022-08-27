@@ -1,7 +1,6 @@
 const main= async()=>{
   [owner, burner]=await hre.ethers.getSigners();
   const fundmefactory= await hre.ethers.getContractFactory("FundMeFactory");
-  console.log(fundmefactory)
   const FundFactory= await fundmefactory.deploy();
   await FundFactory.deployed();
 
