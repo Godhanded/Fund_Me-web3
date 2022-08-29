@@ -1,3 +1,5 @@
+const { Provider } = require("@ethersproject/providers");
+
 const main= async()=>{
   [owner, burner]=await hre.ethers.getSigners();
   const fundmefactory= await hre.ethers.getContractFactory("FundMeFactory");

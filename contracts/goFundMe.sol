@@ -1,5 +1,5 @@
 //SPDX-License-Identifier: MIT
-pragma solidity 0.8.9;
+pragma solidity ^0.8.9;
 
 error invalidState();
 error notFactory();
@@ -87,13 +87,20 @@ contract goFundMe {
         inState(State.Completed)
     {
         balance -= _amount;
-        (bool sent, ) = payable(owner).call{value: _amount}("");
-        if (!sent) revert failed();
+        uint256 fee = (_amount*5)/100;
+        (bool sent, ) = payable(owner).call{value: (_amount-fee)}("");
+        (bool sentFee, )= payable(factory).call{value: fee}("");
+        if (!(sent && sentFee)) revert failed();
     }
 
     function getBalance() external view returns (uint256) 
     {
         return balance;
+    }
+
+    function getAmountNeeded() external view returns(uint256)
+    {
+        return amountNeeded;
     }
 
     function getFunders() external view returns (funders[] memory) 
