@@ -48,6 +48,8 @@ contract FundMeFactory {
 
     function withdraw(uint256 _amount)external onlyOwner
     {
+        if(_amount>balance) revert reverted();
+        balance-=_amount;
         (bool sent, )=payable(owner).call{value: _amount}("");
         if(!sent) revert reverted();
     }
