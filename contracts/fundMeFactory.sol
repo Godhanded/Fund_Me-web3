@@ -4,10 +4,12 @@ pragma solidity ^0.8.9;
 
 import "./goFundMe.sol";
 import "./IFundMe.sol";
+import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
 error reverted();
 
 contract FundMeFactory {
+
     address private owner;
 
     uint256 balance;
@@ -25,6 +27,7 @@ contract FundMeFactory {
     constructor() 
     {
         owner = msg.sender;
+       
     }
     
     receive()external payable{
@@ -47,6 +50,22 @@ contract FundMeFactory {
     {
         (bool sent, )=payable(owner).call{value: _amount}("");
         if(!sent) revert reverted();
+    }
+
+    function getLatestPrice(uint256 _amountUSD) external view returns (uint) {
+         /**
+         * MATIC/USD
+         */
+        AggregatorV3Interface priceFeed= AggregatorV3Interface(0xD4a33860578De61DBAbDc8BFdb98FD742fA7028e);
+        (
+            /*uint80 roundID*/,
+            int price,
+            /*uint startedAt*/,
+            /*uint timeStamp*/,
+            /*uint80 answeredInRound*/
+        ) = priceFeed.latestRoundData();
+        uint256 conversion= (_amountUSD/uint256(price))*1e23;
+        return conversion;
     }
 
     function callBalance(address addr)external view returns(uint256){
