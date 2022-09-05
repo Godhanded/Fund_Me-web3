@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/moralis-v1@latest/dist/moralis.js"></script>
     <title>Withdraw | Track Funding</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,9 +24,9 @@
             <input type="radio" checked="checked" id="withdraw-tab" name="transactions">
             <label for="withdraw-tab">withdraw</label>
             <div>
-                <h3>Enter contact address</h3>
-                <p>[contact address generated when creating funding]</p>
-                <textarea cols="30" rows="10"></textarea>
+                <h3>Enter contract address</h3>
+                <p>[contract address generated when creating funding]</p>
+                <textarea cols="30" rows="5"></textarea>
                 <a href="./fund-profile.htm"><button>continue</button></a>
             </div>
         </section>
@@ -34,19 +35,22 @@
             <input type="radio" id="trcking-tab" name="transactions">
             <label for="trcking-tab">track</label>
             <div>
-                <h3>enter transaction ID</h3>
-                <form action="#">
-                    <input type="text">
-                    <button>
+                <h3>enter transaction ID/contract Address</h3>
+                <section>
+                    <input type="text" id="detail">
+                    <button onclick=viewInfo() id="info">
                         <ion-icon name="search-outline"></ion-icon>
                     </button>
-                </form>
+                </section>
+              
+                <span id="result"></span>
             </div>
         </section>
     </main>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="../main.js"></script>
 </body>
 
 </html>
