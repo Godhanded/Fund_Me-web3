@@ -203,6 +203,15 @@ input {
     cursor: pointer;
 }
 
+.convertbtn{
+    height: 40px;
+    width: 80px;
+    border-radius: 20px;
+    border: none;
+    background: var(--green-dark);
+    color: var(--white);
+}
+
 @media (min-width: 1025px) {
     * {
         font-size: var(--font-size);
