@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/moralis-v1@latest/dist/moralis.js"></script>
     <title>Create Funding</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,10 +61,11 @@
             </span>
 
             <span>
-                <label for="">how much would you like to raise</label>
-                <input type="text">
+                <label for="">how much would you like to raise in USD</label>
+                <input id="amount"type="number">
                 <span>
-                    Polygon (matic)<img src="../images/polygon.svg" alt="">
+                    USD to Polygon (matic)<img src="../images/polygon.svg" alt="">
+                    <button id="converter">convert</button>
                 </span>
             </span>
         </div>
@@ -85,6 +87,7 @@
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="../main.js"></script>
 </body>
 
 </html>
