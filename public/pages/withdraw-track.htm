@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdraw | Track Funding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/withdraw-track.css">
+</head>
+
+<body>
+    <a href="../index.htm">
+        <ion-icon name="close-circle"></ion-icon>
+    </a>
+
+    <main>
+        <section class="withdraw-section">
+            <input type="radio" checked="checked" id="withdraw-tab" name="transactions">
+            <label for="withdraw-tab">withdraw</label>
+            <div>
+                <h3>Enter contact address</h3>
+                <p>[contact address generated when creating funding]</p>
+                <textarea cols="30" rows="10"></textarea>
+                <a href="./fund-profile.htm"><button>continue</button></a>
+            </div>
+        </section>
+
+        <section class="track-section">
+            <input type="radio" id="trcking-tab" name="transactions">
+            <label for="trcking-tab">track</label>
+            <div>
+                <h3>enter transaction ID</h3>
+                <form action="#">
+                    <input type="text">
+                    <button>
+                        <ion-icon name="search-outline"></ion-icon>
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
