@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Funding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/create-funding.css">
+</head>
+
+<body>
+
+    <main class="container">
+        <a href="../index.htm">
+            <ion-icon name="close-circle"></ion-icon>
+        </a>
+        <h2>create funding</h2>
+        <div class="names-container">
+            <span>
+                <label for="">first name</label>
+                <input type="text">
+            </span>
+            <span>
+                <label for="">middle name</label>
+                <input type="text">
+            </span>
+            <span>
+                <label for="">last name</label>
+                <input type="text">
+            </span>
+        </div>
+
+        <div class="project-container">
+            <span>
+                <label for="">project name</label>
+                <input type="text">
+            </span>
+
+            <span>
+                <label for="">project details</label>
+                <textarea cols="30" rows="10"></textarea>
+            </span>
+        </div>
+
+        <div class="funding-info">
+            <span>
+                <label for="">funding address (polygon matic)</label>
+                <span>
+                    <ion-icon name="information-circle"></ion-icon>
+                    Your fund raised will be automatically deposited into this wallet address once you end the
+                    fundraiser
+                    by withdrawing
+                </span>
+                <input type="text">
+            </span>
+
+            <span>
+                <label for="">how much would you like to raise</label>
+                <input type="text">
+                <span>
+                    Polygon (matic)<img src="../images/polygon.svg" alt="">
+                </span>
+            </span>
+        </div>
+
+        <div class="duration-info">
+            <span>
+                <label for="">duration</label>
+                <input type="text">
+            </span>
+
+            <span>
+                <label for="">additional information</label>
+                <textarea cols="30" rows="10"></textarea>
+            </span>
+        </div>
+
+        <button>generate contract</button>
+    </main>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

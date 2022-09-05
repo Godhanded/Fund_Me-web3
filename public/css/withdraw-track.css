@@ -1,0 +1,217 @@
+:root {
+    --font-size: 18px;
+    --mobile-font-size: 14px;
+    --white: rgb(255, 255, 255);
+    --black: rgb(0, 0, 0);
+    --green: rgb(146, 227, 169);
+    --green-light: rgb(173, 201, 181);
+    --green-dark: rgb(102, 159, 119);
+    --white-light: rgb(241, 241, 241);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: var(--mobile-font-size);
+    font-family: 'Poppins',
+        sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    font-size: inherit;
+}
+
+body>a {
+    position: absolute;
+    right: 3%;
+    top: 2%;
+    z-index: 1;
+}
+
+body>a>ion-icon {
+    font-size: 2rem;
+}
+
+main {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 50px;
+}
+
+main>section {
+    display: inline-block;
+}
+
+main>section>div {
+    position: absolute;
+    left: 0;
+    display: none;
+    top: 100%;
+}
+
+main>section>input {
+    display: none;
+}
+
+main [id*="tab"]:checked~div {
+    display: block;
+}
+
+main [id*="tab"]:checked~label {
+    background: var(--white);
+    color: var(--black);
+    transition: all ease 0.15s;
+    font-weight: 700;
+}
+
+main [class*="section"] {
+    width: 50%;
+    text-align: center;
+    margin: 50px 0;
+    background: var(--green-dark);
+    border-radius: 10px;
+}
+
+main>section>label {
+    padding: 5px;
+    font-size: 1.3rem;
+    text-transform: capitalize;
+    display: block;
+    font-weight: 500;
+}
+
+.withdraw-section>div {
+    position: absolute;
+    right: 0;
+    top: 10vh;
+    margin: 0 25px;
+}
+
+.withdraw-section>label {
+    border: 3px solid var(--green-dark);
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    color: var(--white);
+}
+
+.withdraw-section>div>h3 {
+    font-size: 1.2rem;
+    margin-top: 30%;
+    text-transform: capitalize;
+    font-weight: 400;
+}
+
+.withdraw-section>div>p {
+    font-weight: 300;
+    font-size: .8rem;
+    margin: 5px 0;
+}
+
+.withdraw-section button {
+    width: 70%;
+    padding: 5px;
+    margin: 30% 0;
+    text-transform: capitalize;
+    border: none;
+    outline: none;
+    background: var(--green-dark);
+    color: var(--white);
+    border-radius: 10px;
+}
+
+.withdraw-section>div>textarea {
+    display: block;
+    width: 100%;
+    background-color: var(--white-light);
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    font-size: 1.2rem;
+    font-weight: 300;
+    resize: none;
+}
+
+.withdraw-section>div>textarea:focus {
+    border: 1px solid var(--green-dark);
+}
+
+.track-section>label {
+    border: 3px solid var(--green-dark);
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: var(--white);
+}
+
+.track-section>div {
+    position: absolute;
+    right: 0;
+    margin: 0 25px;
+}
+
+.track-section>div>h3 {
+    margin-top: 50px;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    font-weight: 400;
+}
+
+.track-section>div>form {
+    position: relative;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.track-section>div>form>input {
+    width: 100%;
+    height: 50px;
+    border-radius: 20px;
+    padding: 0 10px;
+    font-size: 0.65rem;
+    outline: none;
+    border: none;
+    background: var(--white-light);
+}
+
+.track-section>div>form>button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 50px;
+    width: 60px;
+    border-radius: 20px;
+    border: none;
+    background: var(--green-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.track-section>div>form>button>ion-icon {
+    font-size: 1.3rem;
+    color: var(--white);
+}
+
+@media (min-width: 1025px) {
+    * {
+        font-size: var(--font-size);
+    }
+
+    body {
+        max-width: 70%;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    main [class*="section"] {
+        margin-top: 100px;
+        z-index: 1;
+    }
+}
