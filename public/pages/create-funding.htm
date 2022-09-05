@@ -39,7 +39,7 @@
         <div class="project-container">
             <span>
                 <label for="">project name</label>
-                <input type="text">
+                <input id="name" type="text">
             </span>
 
             <span>
@@ -57,7 +57,7 @@
                     fundraiser
                     by withdrawing
                 </span>
-                <input type="text">
+                <input id="owner" type="text">
             </span>
 
             <span>
@@ -65,7 +65,7 @@
                 <input id="amount"type="number">
                 <span>
                     USD to Polygon (matic)<img src="../images/polygon.svg" alt="">
-                    <button id="converter">convert</button>
+                    <button onclick=convertUSD()>convert</button>
                 </span>
             </span>
         </div>
@@ -82,7 +82,9 @@
             </span>
         </div>
 
-        <button>generate contract</button>
+        <button onclick=generateContract()> generate contract</button>
+        <span id="genAddress"></span>
+        
     </main>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

@@ -48,5 +48,41 @@ async function convertUSD() {
   document.getElementById("amount").value = result.toString();
 }
 
-//document.getElementById("connect").onclick=connect;
-document.getElementById("converter").onclick = convertUSD;
+async function generateContract() {
+  let owner = document.getElementById("owner").value;
+  let amount = document.getElementById("amount").value;
+  let name = document.getElementById("name").value;
+  await Moralis.enableWeb3();
+  let option = {
+    contractAddress: "0xCc8C505fEc49cCE710C6f2F6f1C383d401a2eAF4",
+    functionName: "generateFundMe",
+    abi: [
+      {
+        inputs: [
+          { internalType: "address", name: "_owner", type: "address" },
+          { internalType: "uint256", name: "_amount", type: "uint256" },
+          { internalType: "string", name: "_name", type: "string" },
+        ],
+        name: "generateFundMe",
+        outputs: [{ internalType: "address", name: "", type: "address" }],
+        stateMutability: "nonpayable",
+        type: "function",
+      },
+    ],
+    params: {
+      _owner: owner,
+      _amount: amount,
+      _name: name
+    },
+  };
+
+  let result = await Moralis.executeFunction(option);
+  let receipt= await result.wait();
+  // let Event= receipt.events.find(event=>event.event==="newContract");
+  // console.log(Event);
+  // [_name, address]=Event.args;
+  // console.log("name: ",_name,"address: ",address);
+
+  
+  // document.getElementById("genAddress").innerHTML=Event
+}
