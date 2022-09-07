@@ -221,12 +221,14 @@ async function convertUSD() {
 
   let result = await Moralis.executeFunction(option);
   console.log(result.toString());
-  document.getElementById("amount").value = result.toString();
+  document.getElementById("amount").value = (result/10**18).toString();
 }
 
 async function generateContract() {
   let owner = document.getElementById("owner").value;
   let amount = document.getElementById("amount").value;
+  let newAmount=Moralis.Units.ETH(amount);
+  console.log(newAmount);
   let name = document.getElementById("name").value;
   await Moralis.enableWeb3();
   let option = {
@@ -235,7 +237,7 @@ async function generateContract() {
     abi: factoryAbi,
     params: {
       _owner: owner,
-      _amount: amount,
+      _amount: newAmount,
       _name: name,
     },
   };
@@ -243,9 +245,8 @@ async function generateContract() {
   let result = await Moralis.executeFunction(option);
   let receipt = await result.wait();
   let Event = receipt.events;
-  console.log(Event);
   [_name, address] = Event[0].args;
-  console.log(_name);
+  console.log(address);
   // console.log("name: ",_name.toString(),"address: ",address);
 
   document.getElementById(
@@ -255,9 +256,9 @@ async function generateContract() {
     contractAddress: address,
     functionName: "startFunding",
     abi: fundAbi,
-  
   };
-  await Moralis.executeFunction(option2)
+  let tx = await Moralis.executeFunction(option2)
+  await tx.wait()
 
   document.getElementById(
     "genAddress"
@@ -527,4 +528,18 @@ async function viewInfo() {
   `;
 
   document.getElementById("result").innerHTML = result;
+}
+
+async function withdraw(){
+  let contract= document.getElementById("withdrawAddr").value;
+  let amount= document.getElementById("withdrawAmount").value;
+
+  let option={
+    contractAddress: contract,
+    functionName: "pullFunds",
+    abi: fundAbi,
+    params:{
+      _amount:Moralis.Units.ETH(`${amount}`)
+    }
+  }
 }
