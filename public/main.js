@@ -6,6 +6,192 @@ Moralis.start({
   appId,
 });
 
+const factoryAbi = [
+  { inputs: [], stateMutability: "nonpayable", type: "constructor" },
+  { inputs: [], name: "notOwner", type: "error" },
+  { inputs: [], name: "reverted", type: "error" },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "string",
+        name: "Name",
+        type: "string",
+      },
+      {
+        indexed: false,
+        internalType: "address",
+        name: "Addr",
+        type: "address",
+      },
+    ],
+    name: "newContract",
+    type: "event",
+  },
+  {
+    inputs: [{ internalType: "address", name: "addr", type: "address" }],
+    name: "callBalance",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "address", name: "_owner", type: "address" },
+      { internalType: "uint256", name: "_amount", type: "uint256" },
+      { internalType: "string", name: "_name", type: "string" },
+    ],
+    name: "generateFundMe",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "uint256", name: "_amountUSD", type: "uint256" }],
+    name: "getLatestPrice",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "owner",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "uint256", name: "_amount", type: "uint256" }],
+    name: "withdraw",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  { stateMutability: "payable", type: "receive" },
+];
+
+const fundAbi = [
+  { inputs: [], stateMutability: "nonpayable", type: "constructor" },
+  { inputs: [], name: "failed", type: "error" },
+  { inputs: [], name: "invalidState", type: "error" },
+  { inputs: [], name: "notFactory", type: "error" },
+  { inputs: [], name: "notOwner", type: "error" },
+  {
+    inputs: [],
+    name: "Name",
+    outputs: [{ internalType: "string", name: "", type: "string" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "amountNeeded",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "balance",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "endFunding",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getAmountNeeded",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getBalance",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getFunders",
+    outputs: [
+      {
+        components: [
+          { internalType: "address", name: "funder", type: "address" },
+          { internalType: "uint256", name: "amount", type: "uint256" },
+        ],
+        internalType: "struct goFundMe.funders[]",
+        name: "",
+        type: "tuple[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "address", name: "_owner", type: "address" },
+      { internalType: "uint256", name: "_amount", type: "uint256" },
+      { internalType: "string", name: "_name", type: "string" },
+    ],
+    name: "initializer",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "name",
+    outputs: [{ internalType: "string", name: "", type: "string" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "owner",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "uint256", name: "_amount", type: "uint256" }],
+    name: "pullFunds",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "startFunding",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "state",
+    outputs: [{ internalType: "enum goFundMe.State", name: "", type: "uint8" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "totalReceived",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  { stateMutability: "payable", type: "receive" },
+];
+
 async function connect() {
   let user = await Moralis.User.current();
 
@@ -27,17 +213,7 @@ async function convertUSD() {
   let option = {
     contractAddress: "0xCc8C505fEc49cCE710C6f2F6f1C383d401a2eAF4",
     functionName: "getLatestPrice",
-    abi: [
-      {
-        inputs: [
-          { internalType: "uint256", name: "_amountUSD", type: "uint256" },
-        ],
-        name: "getLatestPrice",
-        outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-        stateMutability: "view",
-        type: "function",
-      },
-    ],
+    abi: factoryAbi,
     params: {
       _amountUSD: amount,
     },
@@ -56,263 +232,264 @@ async function generateContract() {
   let option = {
     contractAddress: "0xCc8C505fEc49cCE710C6f2F6f1C383d401a2eAF4",
     functionName: "generateFundMe",
-    abi: [
-      {
-        inputs: [
-          { internalType: "address", name: "_owner", type: "address" },
-          { internalType: "uint256", name: "_amount", type: "uint256" },
-          { internalType: "string", name: "_name", type: "string" },
-        ],
-        name: "generateFundMe",
-        outputs: [{ internalType: "address", name: "", type: "address" }],
-        stateMutability: "nonpayable",
-        type: "function",
-      },
-    ],
+    abi: factoryAbi,
     params: {
       _owner: owner,
       _amount: amount,
-      _name: name
+      _name: name,
     },
   };
 
   let result = await Moralis.executeFunction(option);
-  let receipt= await result.wait();
-  // let Event= receipt.events.find(event=>event.event==="newContract");
-  // console.log(Event);
-  // [_name, address]=Event.args;
-  // console.log("name: ",_name,"address: ",address);
+  let receipt = await result.wait();
+  let Event = receipt.events;
+  console.log(Event);
+  [_name, address] = Event[0].args;
+  console.log(_name);
+  // console.log("name: ",_name.toString(),"address: ",address);
 
+  document.getElementById(
+    "genAddress"
+  ).innerHTML = `Generated Contract, Enabling...`;
+  let option2 = {
+    contractAddress: address,
+    functionName: "startFunding",
+    abi: fundAbi,
   
-  // document.getElementById("genAddress").innerHTML=Event
+  };
+  await Moralis.executeFunction(option2)
+
+  document.getElementById(
+    "genAddress"
+  ).innerHTML = `${_name}, generated and enabled at: ${address}`;
 }
 
-async function viewInfo(){
+async function viewInfo() {
   await Moralis.enableWeb3();
-  let address= document.getElementById("detail").value;
-  Abi=[
+  let address = document.getElementById("detail").value;
+  Abi = [
     {
-      "inputs": [],
-      "stateMutability": "nonpayable",
-      "type": "constructor"
+      inputs: [],
+      stateMutability: "nonpayable",
+      type: "constructor",
     },
     {
-      "inputs": [],
-      "name": "failed",
-      "type": "error"
+      inputs: [],
+      name: "failed",
+      type: "error",
     },
     {
-      "inputs": [],
-      "name": "invalidState",
-      "type": "error"
+      inputs: [],
+      name: "invalidState",
+      type: "error",
     },
     {
-      "inputs": [],
-      "name": "notFactory",
-      "type": "error"
+      inputs: [],
+      name: "notFactory",
+      type: "error",
     },
     {
-      "inputs": [],
-      "name": "notOwner",
-      "type": "error"
+      inputs: [],
+      name: "notOwner",
+      type: "error",
     },
     {
-      "inputs": [],
-      "name": "Name",
-      "outputs": [
+      inputs: [],
+      name: "Name",
+      outputs: [
         {
-          "internalType": "string",
-          "name": "",
-          "type": "string"
-        }
+          internalType: "string",
+          name: "",
+          type: "string",
+        },
       ],
-      "stateMutability": "view",
-      "type": "function"
+      stateMutability: "view",
+      type: "function",
     },
     {
-      "inputs": [],
-      "name": "amountNeeded",
-      "outputs": [
+      inputs: [],
+      name: "amountNeeded",
+      outputs: [
         {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
+          internalType: "uint256",
+          name: "",
+          type: "uint256",
+        },
       ],
-      "stateMutability": "view",
-      "type": "function"
+      stateMutability: "view",
+      type: "function",
     },
     {
-      "inputs": [],
-      "name": "balance",
-      "outputs": [
+      inputs: [],
+      name: "balance",
+      outputs: [
         {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
+          internalType: "uint256",
+          name: "",
+          type: "uint256",
+        },
       ],
-      "stateMutability": "view",
-      "type": "function"
+      stateMutability: "view",
+      type: "function",
     },
     {
-      "inputs": [],
-      "name": "endFunding",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
+      inputs: [],
+      name: "endFunding",
+      outputs: [],
+      stateMutability: "nonpayable",
+      type: "function",
     },
     {
-      "inputs": [],
-      "name": "getAmountNeeded",
-      "outputs": [
+      inputs: [],
+      name: "getAmountNeeded",
+      outputs: [
         {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
+          internalType: "uint256",
+          name: "",
+          type: "uint256",
+        },
       ],
-      "stateMutability": "view",
-      "type": "function"
+      stateMutability: "view",
+      type: "function",
     },
     {
-      "inputs": [],
-      "name": "getBalance",
-      "outputs": [
+      inputs: [],
+      name: "getBalance",
+      outputs: [
         {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
+          internalType: "uint256",
+          name: "",
+          type: "uint256",
+        },
       ],
-      "stateMutability": "view",
-      "type": "function"
+      stateMutability: "view",
+      type: "function",
     },
     {
-      "inputs": [],
-      "name": "getFunders",
-      "outputs": [
+      inputs: [],
+      name: "getFunders",
+      outputs: [
         {
-          "components": [
+          components: [
             {
-              "internalType": "address",
-              "name": "funder",
-              "type": "address"
+              internalType: "address",
+              name: "funder",
+              type: "address",
             },
             {
-              "internalType": "uint256",
-              "name": "amount",
-              "type": "uint256"
-            }
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
           ],
-          "internalType": "struct goFundMe.funders[]",
-          "name": "",
-          "type": "tuple[]"
-        }
+          internalType: "struct goFundMe.funders[]",
+          name: "",
+          type: "tuple[]",
+        },
       ],
-      "stateMutability": "view",
-      "type": "function"
+      stateMutability: "view",
+      type: "function",
     },
     {
-      "inputs": [
+      inputs: [
         {
-          "internalType": "address",
-          "name": "_owner",
-          "type": "address"
+          internalType: "address",
+          name: "_owner",
+          type: "address",
         },
         {
-          "internalType": "uint256",
-          "name": "_amount",
-          "type": "uint256"
+          internalType: "uint256",
+          name: "_amount",
+          type: "uint256",
         },
         {
-          "internalType": "string",
-          "name": "_name",
-          "type": "string"
-        }
+          internalType: "string",
+          name: "_name",
+          type: "string",
+        },
       ],
-      "name": "initializer",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
+      name: "initializer",
+      outputs: [],
+      stateMutability: "nonpayable",
+      type: "function",
     },
     {
-      "inputs": [],
-      "name": "name",
-      "outputs": [
+      inputs: [],
+      name: "name",
+      outputs: [
         {
-          "internalType": "string",
-          "name": "",
-          "type": "string"
-        }
+          internalType: "string",
+          name: "",
+          type: "string",
+        },
       ],
-      "stateMutability": "view",
-      "type": "function"
+      stateMutability: "view",
+      type: "function",
     },
     {
-      "inputs": [],
-      "name": "owner",
-      "outputs": [
+      inputs: [],
+      name: "owner",
+      outputs: [
         {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
+          internalType: "address",
+          name: "",
+          type: "address",
+        },
       ],
-      "stateMutability": "view",
-      "type": "function"
+      stateMutability: "view",
+      type: "function",
     },
     {
-      "inputs": [
+      inputs: [
         {
-          "internalType": "uint256",
-          "name": "_amount",
-          "type": "uint256"
-        }
+          internalType: "uint256",
+          name: "_amount",
+          type: "uint256",
+        },
       ],
-      "name": "pullFunds",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
+      name: "pullFunds",
+      outputs: [],
+      stateMutability: "nonpayable",
+      type: "function",
     },
     {
-      "inputs": [],
-      "name": "startFunding",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
+      inputs: [],
+      name: "startFunding",
+      outputs: [],
+      stateMutability: "nonpayable",
+      type: "function",
     },
     {
-      "inputs": [],
-      "name": "state",
-      "outputs": [
+      inputs: [],
+      name: "state",
+      outputs: [
         {
-          "internalType": "enum goFundMe.State",
-          "name": "",
-          "type": "uint8"
-        }
+          internalType: "enum goFundMe.State",
+          name: "",
+          type: "uint8",
+        },
       ],
-      "stateMutability": "view",
-      "type": "function"
+      stateMutability: "view",
+      type: "function",
     },
     {
-      "inputs": [],
-      "name": "totalReceived",
-      "outputs": [
+      inputs: [],
+      name: "totalReceived",
+      outputs: [
         {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
+          internalType: "uint256",
+          name: "",
+          type: "uint256",
+        },
       ],
-      "stateMutability": "view",
-      "type": "function"
+      stateMutability: "view",
+      type: "function",
     },
     {
-      "stateMutability": "payable",
-      "type": "receive"
-    }
-  ]
+      stateMutability: "payable",
+      type: "receive",
+    },
+  ];
   let option1 = {
     contractAddress: address,
     functionName: "getBalance",
@@ -343,12 +520,11 @@ async function viewInfo(){
 
   let funders = await Moralis.executeFunction(option3);
 
-  result=`
+  result = `
   <h3>amount received: <span>${balance}</span></h3><br>
   <h3>amount expecting: <span>${expected}</span></h3><br>
   <h3>your funders: <span>${funders}</span></h3><br>
   `;
 
-  document.getElementById("result").innerHTML= result;
-
+  document.getElementById("result").innerHTML = result;
 }
