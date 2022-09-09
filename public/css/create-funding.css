@@ -156,14 +156,33 @@ input {
     height: 40px;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    width: 30%;
+    justify-content: space-between;
+    width: 25%;
     font-size: .7rem;
     border-radius: 20px;
 }
 
 .funding-info>span:nth-child(2)>span>img {
+    margin: 0 5px;
     max-width: 20%;
+}
+
+.convertbtn {
+    height: 40px;
+    width: 90px;
+    border-radius: 20px;
+    border: none;
+    background: var(--green-dark);
+    color: var(--white);
+    font-size: 1rem;
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+    /* position: inherit; */
+    right: 0;
 }
 
 .duration-info>span {

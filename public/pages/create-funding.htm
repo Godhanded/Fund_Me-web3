@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/moralis-v1@latest/dist/moralis.js"></script>
     <title>Create Funding</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +39,7 @@
         <div class="project-container">
             <span>
                 <label for="">project name</label>
-                <input type="text">
+                <input id="name" type="text">
             </span>
 
             <span>
@@ -49,21 +50,22 @@
 
         <div class="funding-info">
             <span>
-                <label for="">funding address (polygon matic)</label>
+                <label for="">funding/owner address (polygon matic)</label>
                 <span>
                     <ion-icon name="information-circle"></ion-icon>
                     Your fund raised will be automatically deposited into this wallet address once you end the
                     fundraiser
-                    by withdrawing
+                    by withdrawing, ensure you own this wallet
                 </span>
-                <input type="text">
+                <input id="owner" type="text">
             </span>
 
             <span>
-                <label for="">how much would you like to raise</label>
-                <input type="text">
+                <label for="">how much would you like to raise in USD</label>
+                <input id="amount" type="number" placeholder="USD to Polygon (matic)">
                 <span>
-                    Polygon (matic)<img src="../images/polygon.svg" alt="">
+                    <img src="../images/polygon.svg" alt="">
+                    <button class="convertbtn" onclick=convertUSD()>convert</button>
                 </span>
             </span>
         </div>
@@ -80,11 +82,14 @@
             </span>
         </div>
 
-        <button>generate contract</button>
+        <button onclick=generateContract()> generate contract</button>
+        <span id="genAddress"></span>
+
     </main>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="../main.js"></script>
 </body>
 
 </html>

@@ -1,19 +1,19 @@
 const { Provider } = require("@ethersproject/providers");
 
 const main= async()=>{
-  [owner, burner]=await hre.ethers.getSigners();
+  //[owner, burner]=await hre.ethers.getSigners();
   const fundmefactory= await hre.ethers.getContractFactory("FundMeFactory");
   const FundFactory= await fundmefactory.deploy();
   await FundFactory.deployed();
 
   console.log("contract deployed at: ", FundFactory.address);
-  console.log("Owner is: ",owner.address);
+  //console.log("Owner is: ",owner.address);
 
-  let test= await FundFactory.generateFundMe(owner.address,hre.ethers.utils.parseEther("5"),"test")
-  let receipt= await test.wait();
-  let Event= receipt.events.find(event=>event.event==="newContract");
-  [_name, address]=Event.args;
-  console.log("name: ",_name,"address: ",address);
+  // let test= await FundFactory.generateFundMe(owner.address,hre.ethers.utils.parseEther("5"),"test")
+  // let receipt= await test.wait();
+  // let Event= receipt.events.find(event=>event.event==="newContract");
+  // [_name, address]=Event.args;
+  // console.log("name: ",_name,"address: ",address);
 
 }
 

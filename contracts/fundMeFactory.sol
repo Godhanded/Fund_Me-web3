@@ -66,7 +66,7 @@ contract FundMeFactory {
             /*uint timeStamp*/,
             /*uint80 answeredInRound*/
         ) = priceFeed.latestRoundData();
-        uint256 conversion= (_amountUSD/uint256(price))*1e23;
+        uint256 conversion= (_amountUSD*1e26)/uint256(price);
         return conversion;
     }
 

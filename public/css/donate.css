@@ -82,7 +82,6 @@ main>p {
 .spotlight-options {
     display: flex;
     justify-content: space-between;
-    /* width: 100%; */
 }
 
 .spotlight-options>ul {
@@ -110,10 +109,15 @@ main>p {
     justify-content: center;
 }
 
-.spotlight-options .tab-active {
+.spotlight-options>ul>li:hover {
     background-color: #86F673;
     border: 3px solid #47C789;
 }
+
+/* .spotlight-options .tab-active {
+    background-color: #86F673;
+    border: 3px solid #47C789;
+} */
 
 .spotlight-image {
     overflow: scroll;

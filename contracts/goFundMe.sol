@@ -62,7 +62,7 @@ contract goFundMe {
 
     receive() external payable inState(State.Funding) 
     {
-        if ((totalReceived + msg.value) > amountNeeded) {
+        if ((totalReceived + msg.value) < amountNeeded) {
             balance += msg.value;
             totalReceived += msg.value;
             fundersList.push(funders({funder: msg.sender, amount: msg.value}));
@@ -86,6 +86,7 @@ contract goFundMe {
         onlyOwner
         inState(State.Completed)
     {
+        if(_amount > balance) revert failed();
         balance -= _amount;
         uint256 fee = (_amount*5)/100;
         (bool sent, ) = payable(owner).call{value: (_amount-fee)}("");
