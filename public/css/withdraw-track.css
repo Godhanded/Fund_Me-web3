@@ -102,7 +102,7 @@ main>section>label {
 
 .withdraw-section>div>h3 {
     font-size: 1.2rem;
-    margin-top: 30%;
+    margin-top: 20%;
     text-transform: capitalize;
     font-weight: 400;
 }
@@ -116,7 +116,7 @@ main>section>label {
 .withdraw-section button {
     width: 70%;
     padding: 5px;
-    margin: 30% 0;
+    margin: 20vh 0;
     text-transform: capitalize;
     border: none;
     outline: none;
@@ -125,7 +125,7 @@ main>section>label {
     border-radius: 10px;
 }
 
-.withdraw-section>div>textarea {
+.withdraw-section>div>input {
     display: block;
     width: 100%;
     background-color: var(--white-light);
@@ -134,10 +134,11 @@ main>section>label {
     outline: none;
     font-size: 1.2rem;
     font-weight: 300;
-    resize: none;
+    height: 50px;
+    padding: 10px;
 }
 
-.withdraw-section>div>textarea:focus {
+.withdraw-section>div>input:focus {
     border: 1px solid var(--green-dark);
 }
 

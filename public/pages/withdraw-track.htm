@@ -26,7 +26,11 @@
             <div>
                 <h3>Enter contract address</h3>
                 <p>[contract address generated when creating funding]</p>
-                <textarea cols="30" rows="1" id="withdrawAddr" ></textarea><span><input type="number"  id="withdrawAmount" placeholder="Amount in Matic"></span>
+
+                <input type="number" id="withdrawAmount" placeholder="Amount in Matic">
+
+                <textarea cols="30" rows="1" id="withdrawAddr" ></textarea>
+
                 <a onclick=withdraw()><button>End Funding and Withdraw</button></a>
 
                 <span id="withdrawResult"></span>
@@ -44,7 +48,9 @@
                         <ion-icon name="search-outline"></ion-icon>
                     </button>
                 </section>
-              
+
+
+
                 <span id="result"></span>
             </div>
         </section>
