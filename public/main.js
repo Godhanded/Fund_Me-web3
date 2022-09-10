@@ -359,7 +359,8 @@ async function connect() {
       signingMessage: "Please connect and sign wallet to get access",
     });
     await Moralis.enableWeb3();
-    document.getElementById("connect").textContent = user.get("ethAddress");
+    ethAddress = user.get("ethAddress").slice(0, 10);
+    document.getElementById("connect").textContent = `${ethAddress}...`;
   } else {
     await Moralis.User.logOut();
     document.getElementById("connect").textContent = "connect";
