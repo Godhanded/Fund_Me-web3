@@ -62,9 +62,11 @@
 
             <span>
                 <label for="">how much would you like to raise in USD</label>
-                <input id="amount" type="number" placeholder="USD to Polygon (matic)">
+
+                <input id="amount"type="number">
                 <span>
-                    <img src="../images/polygon.svg" alt="">
+                    USD to Polygon (matic)<img src="../images/polygon.svg" alt="">
+
                     <button class="convertbtn" onclick=convertUSD()>convert</button>
                 </span>
             </span>
@@ -82,9 +84,10 @@
             </span>
         </div>
 
+        
         <button onclick=generateContract()> generate contract</button>
         <span id="genAddress"></span>
-
+        
     </main>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
