@@ -125,7 +125,7 @@ main>section>label {
     border-radius: 10px;
 }
 
-.withdraw-section>div>input {
+.withdraw-section>div>textarea {
     display: block;
     width: 100%;
     background-color: var(--white-light);
@@ -138,7 +138,7 @@ main>section>label {
     padding: 10px;
 }
 
-.withdraw-section>div>input:focus {
+.withdraw-section>div>textarea:focus {
     border: 1px solid var(--green-dark);
 }
 
