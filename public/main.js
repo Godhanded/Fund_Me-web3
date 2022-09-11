@@ -8,347 +8,347 @@ Moralis.start({
 
 const factoryAbi = [
   {
-    "inputs": [],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+    inputs: [],
+    stateMutability: "nonpayable",
+    type: "constructor",
   },
   {
-    "inputs": [],
-    "name": "notOwner",
-    "type": "error"
+    inputs: [],
+    name: "notOwner",
+    type: "error",
   },
   {
-    "inputs": [],
-    "name": "reverted",
-    "type": "error"
+    inputs: [],
+    name: "reverted",
+    type: "error",
   },
   {
-    "anonymous": false,
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "indexed": false,
-        "internalType": "string",
-        "name": "Name",
-        "type": "string"
+        indexed: false,
+        internalType: "string",
+        name: "Name",
+        type: "string",
       },
       {
-        "indexed": false,
-        "internalType": "address",
-        "name": "Addr",
-        "type": "address"
-      }
+        indexed: false,
+        internalType: "address",
+        name: "Addr",
+        type: "address",
+      },
     ],
-    "name": "newContract",
-    "type": "event"
+    name: "newContract",
+    type: "event",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "addr",
-        "type": "address"
-      }
+        internalType: "address",
+        name: "addr",
+        type: "address",
+      },
     ],
-    "name": "callBalance",
-    "outputs": [
+    name: "callBalance",
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "_owner",
-        "type": "address"
+        internalType: "address",
+        name: "_owner",
+        type: "address",
       },
       {
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
+        internalType: "uint256",
+        name: "_amount",
+        type: "uint256",
       },
       {
-        "internalType": "string",
-        "name": "_name",
-        "type": "string"
-      }
+        internalType: "string",
+        name: "_name",
+        type: "string",
+      },
     ],
-    "name": "generateFundMe",
-    "outputs": [
+    name: "generateFundMe",
+    outputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
     ],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    stateMutability: "nonpayable",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "uint256",
-        "name": "_amountUSD",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "_amountUSD",
+        type: "uint256",
+      },
     ],
-    "name": "getLatestPrice",
-    "outputs": [
+    name: "getLatestPrice",
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "_amount",
+        type: "uint256",
+      },
     ],
-    "name": "withdraw",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: "withdraw",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
   },
   {
-    "stateMutability": "payable",
-    "type": "receive"
-  }
+    stateMutability: "payable",
+    type: "receive",
+  },
 ];
 
 const fundAbi = [
   {
-    "inputs": [],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+    inputs: [],
+    stateMutability: "nonpayable",
+    type: "constructor",
   },
   {
-    "inputs": [],
-    "name": "failed",
-    "type": "error"
+    inputs: [],
+    name: "failed",
+    type: "error",
   },
   {
-    "inputs": [],
-    "name": "invalidState",
-    "type": "error"
+    inputs: [],
+    name: "invalidState",
+    type: "error",
   },
   {
-    "inputs": [],
-    "name": "notFactory",
-    "type": "error"
+    inputs: [],
+    name: "notFactory",
+    type: "error",
   },
   {
-    "inputs": [],
-    "name": "notOwner",
-    "type": "error"
+    inputs: [],
+    name: "notOwner",
+    type: "error",
   },
   {
-    "inputs": [],
-    "name": "Name",
-    "outputs": [
+    inputs: [],
+    name: "Name",
+    outputs: [
       {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "amountNeeded",
-    "outputs": [
+    inputs: [],
+    name: "amountNeeded",
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "balance",
-    "outputs": [
+    inputs: [],
+    name: "balance",
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "endFunding",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    inputs: [],
+    name: "endFunding",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "getAmountNeeded",
-    "outputs": [
+    inputs: [],
+    name: "getAmountNeeded",
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "getBalance",
-    "outputs": [
+    inputs: [],
+    name: "getBalance",
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "getFunders",
-    "outputs": [
+    inputs: [],
+    name: "getFunders",
+    outputs: [
       {
-        "components": [
+        components: [
           {
-            "internalType": "address",
-            "name": "funder",
-            "type": "address"
+            internalType: "address",
+            name: "funder",
+            type: "address",
           },
           {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
+            internalType: "uint256",
+            name: "amount",
+            type: "uint256",
+          },
         ],
-        "internalType": "struct goFundMe.funders[]",
-        "name": "",
-        "type": "tuple[]"
-      }
+        internalType: "struct goFundMe.funders[]",
+        name: "",
+        type: "tuple[]",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "_owner",
-        "type": "address"
+        internalType: "address",
+        name: "_owner",
+        type: "address",
       },
       {
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
+        internalType: "uint256",
+        name: "_amount",
+        type: "uint256",
       },
       {
-        "internalType": "string",
-        "name": "_name",
-        "type": "string"
-      }
+        internalType: "string",
+        name: "_name",
+        type: "string",
+      },
     ],
-    "name": "initializer",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: "initializer",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "name",
-    "outputs": [
+    inputs: [],
+    name: "name",
+    outputs: [
       {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "owner",
-    "outputs": [
+    inputs: [],
+    name: "owner",
+    outputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "_amount",
+        type: "uint256",
+      },
     ],
-    "name": "pullFunds",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: "pullFunds",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "startFunding",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    inputs: [],
+    name: "startFunding",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "state",
-    "outputs": [
+    inputs: [],
+    name: "state",
+    outputs: [
       {
-        "internalType": "enum goFundMe.State",
-        "name": "",
-        "type": "uint8"
-      }
+        internalType: "enum goFundMe.State",
+        name: "",
+        type: "uint8",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "totalReceived",
-    "outputs": [
+    inputs: [],
+    name: "totalReceived",
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "stateMutability": "payable",
-    "type": "receive"
-  }
+    stateMutability: "payable",
+    type: "receive",
+  },
 ];
 
 async function connect() {
@@ -380,13 +380,13 @@ async function convertUSD() {
 
   let result = await Moralis.executeFunction(option);
   console.log(result.toString());
-  document.getElementById("amount").value = (result/10**18).toString();
+  document.getElementById("amount").value = (result / 10 ** 18).toString();
 }
 
 async function generateContract() {
   let owner = document.getElementById("owner").value;
   let amount = document.getElementById("amount").value;
-  let newAmount=Moralis.Units.ETH(amount);
+  let newAmount = Moralis.Units.ETH(amount);
   console.log(newAmount);
   let name = document.getElementById("name").value;
   await Moralis.enableWeb3();
@@ -405,8 +405,6 @@ async function generateContract() {
   let receipt = await result.wait();
   let Event = receipt.events;
   [_name, address] = Event[0].args;
-  console.log(address);
-  // console.log("name: ",_name.toString(),"address: ",address);
 
   document.getElementById(
     "genAddress"
@@ -416,8 +414,12 @@ async function generateContract() {
     functionName: "startFunding",
     abi: fundAbi,
   };
-  let tx = await Moralis.executeFunction(option2)
-  await tx.wait()
+  let tx = await Moralis.executeFunction(option2);
+  await tx.wait();
+
+  const image= await uploadImage();
+
+  const ipfsLink= await uploadMeta(image,owner,amount,name,address)
 
   document.getElementById(
     "genAddress"
@@ -427,7 +429,7 @@ async function generateContract() {
 async function viewInfo() {
   await Moralis.enableWeb3();
   let address = document.getElementById("detail").value;
-  Abi = fundAbi
+  Abi = fundAbi;
   let option1 = {
     contractAddress: address,
     functionName: "getBalance",
@@ -467,31 +469,32 @@ async function viewInfo() {
   document.getElementById("result").innerHTML = result;
 }
 
-async function withdraw(){
-  let contract= document.getElementById("withdrawAddr").value;
-  let amount= document.getElementById("withdrawAmount").value;
- 
+async function withdraw() {
+  let contract = document.getElementById("withdrawAddr").value;
+  let amount = document.getElementById("withdrawAmount").value;
+
   await Moralis.enableWeb3();
 
-  let option2={
+  let option2 = {
     contractAddress: contract,
     functionName: "endFunding",
-    abi:fundAbi,
-  }
+    abi: fundAbi,
+  };
 
-  let option={
+  let option = {
     contractAddress: contract,
     functionName: "pullFunds",
-    abi:fundAbi,
-    params:{
-      _amount:Moralis.Units.ETH(amount),
-    }
-  }
+    abi: fundAbi,
+    params: {
+      _amount: Moralis.Units.ETH(amount),
+    },
+  };
 
   await Moralis.executeFunction(option2);
-  document.getElementById("withdrawResult").innerHTML="Disabled funding, Now Withdrawing...";
+  document.getElementById("withdrawResult").innerHTML =
+    "Disabled funding, Now Withdrawing...";
   await Moralis.executeFunction(option);
-  const html= `
+  const html = `
   <head>
     <title>Withdraw Success</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -517,7 +520,39 @@ async function withdraw(){
     <div class="buttons">
         <button>share</button>
         <a href="../index.htm">end</a>
-    </div></body>`
-  document.getElementById("withdrawResult").innerHTML="Completed";
-  document.getElementById("withdraw-section").innerHTML=html;
+    </div></body>`;
+  document.getElementById("withdrawResult").innerHTML = "Completed";
+  document.getElementById("withdraw-section").innerHTML = html;
+}
+
+async function uploadImage() {
+  const data = fileInput.files[0];
+  const file = new Moralis.File(data.name, data);
+  await file.saveIPFS();
+
+  return file.ipfs();
+}
+
+async function uploadMeta(image,owner,amount,name,contract) {
+  const fName=document.getElementById("fName").value;
+  const lName= document.getElementById("lName").value;
+  const desc =document.getElementById("details").value;
+  const duration= document.getElementById("duration").value;
+  const extraInfo= document.getElementById("additionalInfo").value;
+
+  const metaData= {
+    "Creator Name": fName +" "+ lName,
+    "Project Name": name,
+    "Image": image,
+    "Project Details": desc,
+    "Additional details": extraInfo,
+    "Funding Amount": amount,
+    "Project Owner": owner,
+    "Project Duration": duration,
+    "Contract Address": contract
+  }
+  const file= new Moralis.File("file.json",{base64 : btoa(JSON.stringify(metaData))})
+  await file.saveIPFS()
+
+  return file.ipfs();
 }

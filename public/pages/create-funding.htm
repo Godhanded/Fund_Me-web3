@@ -24,7 +24,7 @@
         <div class="names-container">
             <span>
                 <label for="">first name</label>
-                <input type="text">
+                <input type="text" id="fName">
             </span>
             <span>
                 <label for="">middle name</label>
@@ -32,7 +32,7 @@
             </span>
             <span>
                 <label for="">last name</label>
-                <input type="text">
+                <input type="text" id="lName">
             </span>
         </div>
 
@@ -41,10 +41,15 @@
                 <label for="">project name</label>
                 <input id="name" type="text">
             </span>
+            
+            <span>
+                <label for="">project Image</label>
+                <input id="fileInput" name="fileInput" type="file">
+            </span>
 
             <span>
                 <label for="">project details</label>
-                <textarea cols="30" rows="10"></textarea>
+                <textarea id="details" cols="30" rows="10"></textarea>
             </span>
         </div>
 
@@ -75,18 +80,19 @@
         <div class="duration-info">
             <span>
                 <label for="">duration</label>
-                <input type="text">
+                <input id="duration" type="text">
             </span>
 
             <span>
                 <label for="">additional information</label>
-                <textarea cols="30" rows="10"></textarea>
+                <textarea id="additionalInfo" cols="30" rows="10"></textarea>
             </span>
         </div>
 
+        <span id="genAddress"></span>
         
         <button onclick=generateContract()> generate contract</button>
-        <span id="genAddress"></span>
+        
         
     </main>
 

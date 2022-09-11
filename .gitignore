@@ -114,3 +114,6 @@ typechain-types
 cache
 artifacts
 
+
+#gitpod
+.gitpod.yml
