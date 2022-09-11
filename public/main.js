@@ -428,7 +428,7 @@ async function generateContract() {
 
   document.getElementById(
     "genAddress"
-  ).innerHTML = `${_name}, generated and enabled at: ${address}; ipfs Link: ${ipfsLink}`;
+  ).innerHTML = `${_name}, generated and enabled at: ${address} ; ipfs Link: ${ipfsLink}`;
 }
 
 async function viewInfo() {
