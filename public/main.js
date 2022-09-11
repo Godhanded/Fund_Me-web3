@@ -416,6 +416,11 @@ async function generateContract() {
   };
   let tx = await Moralis.executeFunction(option2);
   await tx.wait();
+  
+  document.getElementById(
+    "genAddress"
+  ).innerHTML = `Contract Enabled, Uploading Meta data to IPFS `;
+
 
   const image= await uploadImage();
 
@@ -423,7 +428,7 @@ async function generateContract() {
 
   document.getElementById(
     "genAddress"
-  ).innerHTML = `${_name}, generated and enabled at: ${address}`;
+  ).innerHTML = `${_name}, generated and enabled at: ${address}; ipfs Link: ${ipfsLink}`;
 }
 
 async function viewInfo() {
