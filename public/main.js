@@ -387,9 +387,11 @@ async function generateContract() {
   let owner = document.getElementById("owner").value;
   let amount = document.getElementById("amount").value;
   let newAmount = Moralis.Units.ETH(amount);
-  console.log(newAmount);
   let name = document.getElementById("name").value;
   await Moralis.enableWeb3();
+  document.getElementById(
+    "genAddress"
+  ).innerHTML = `Loading...`;
   let option = {
     contractAddress: "0x9A45928dfD2c612137F0EC5E2164A9284534113d",
     functionName: "generateFundMe",
@@ -425,6 +427,13 @@ async function generateContract() {
   const image= await uploadImage();
 
   const ipfsLink= await uploadMeta(image,owner,amount,name,address)
+  const fundingInfo= Moralis.Object.extend('fundingInfo');
+  const fundCreated= new fundingInfo();
+  fundCreated.save({
+    owner: owner,
+    projectName: name,
+    ipfsHash: ipfsLink,
+  })
 
   document.getElementById(
     "genAddress"
@@ -560,4 +569,13 @@ async function uploadMeta(image,owner,amount,name,contract) {
   await file.saveIPFS()
 
   return file.ipfs();
+}
+
+async function getFundings(){
+  const name= document.getElementById("search").value;
+  const fundingInfo= Moralis.Object.extend('fundingInfo');
+  const fundQuery= new Moralis.Query("fundingInfo");
+  const result= await fundQuery.find("projectName", name)
+  const {projectName, ipfsHash, owner}= result[0].attributes
+  console.log(projectName,ipfsHash,owner);
 }

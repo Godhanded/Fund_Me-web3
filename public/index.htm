@@ -22,10 +22,8 @@
 
         <ul class="ls menu-items">
             <li>about</li>
-            <li>funding</li>
-            <li>community</li>
-            <li>services</li>
-            <li>contact</li>
+            <li><a href="./pages/withdraw-track.htm">withdraw/track funding</a></li>
+            <li><a href="./pages/create-funding.htm">create funding</a></li>
             <li ><a id="connect" onclick=connect() href="#">connect</a></li>
         </ul>
 
@@ -39,7 +37,7 @@
                     <ion-icon name="close-circle-sharp"></ion-icon>
                 </label>
                 <ul>
-                    <p><a id="connect" href="#">connect wallet</a></p>
+                    <p><a id="connect" href="#" onclick=connect()>connect wallet</a></p>
                     <li><a href="./pages/withdraw-track.htm">withdraw/track funding</a></li>
                     <li><a href="./pages/create-funding.htm">create funding</a></li>
                     <li><a href="./pages/donate.htm">donate</a></li>
@@ -53,8 +51,8 @@
     <section class="about-section">
         <span id="genAddress"></span>
         <form action="#">
-            <input type="text" placeholder="Search funding address and donations">
-            <button>
+            <input type="text" id="search" placeholder="Search funding address by project name">
+            <button onclick=getFundings()>
                 <ion-icon name="search-outline"></ion-icon>
             </button>
         </form>
