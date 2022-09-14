@@ -577,5 +577,6 @@ async function getFundings(){
   const fundQuery= new Moralis.Query("fundingInfo");
   const result= await fundQuery.find("projectName", name)
   const {projectName, ipfsHash, owner}= result[0].attributes
-  console.log(projectName,ipfsHash,owner);
+  document.getElementById("mIframe").style.display='block';
+  document.getElementById("mIframe").src= ipfsHash;
 }
