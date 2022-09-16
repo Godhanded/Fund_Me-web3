@@ -129,12 +129,12 @@ header {
     justify-content: space-between;
 }
 
-.logo>div {
+.logo>a {
     height: 30px;
     width: 30px;
 }
 
-.logo>div>img {
+.logo>a>img {
     max-width: 100%;
 }
 
