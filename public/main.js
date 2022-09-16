@@ -244,4 +244,4 @@ async function getFundings() {
   document.getElementById("mIframe").style.display = "block";
   document.getElementById("mIframe").src = ipfsHash;
 }
-check()
+check();
