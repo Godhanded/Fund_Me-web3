@@ -157,14 +157,16 @@ input {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 25%;
-    font-size: .7rem;
+    text-align: center;
+    width: 45%;
+    font-size: .6rem;
     border-radius: 20px;
+    overflow: hidden;
 }
 
 .funding-info>span:nth-child(2)>span>img {
     margin: 0 5px;
-    max-width: 20%;
+    max-width: 10%;
 }
 
 .convertbtn {
@@ -222,7 +224,7 @@ input {
     cursor: pointer;
 }
 
-.convertbtn{
+.convertbtn {
     height: 40px;
     width: 90px;
     border-radius: 20px;

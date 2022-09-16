@@ -17,14 +17,16 @@
 <body>
     <header>
         <div class="logo">
-            thirdfund
+            <div>
+                <img src="./public/images/thirdfund logo.png" alt="">
+            </div>
+            ThirdFund
         </div>
 
         <ul class="ls menu-items">
-            <li>about</li>
             <li><a href="./public/pages/withdraw-track.htm">withdraw/track funding</a></li>
             <li><a href="./public/pages/create-funding.htm">create funding</a></li>
-            <li ><a id="connect" onclick=connect() href="#">connect</a></li>
+            <li><a id="connect" onclick=connect() href="#">connect</a></li>
         </ul>
 
         <nav>
@@ -51,7 +53,7 @@
     <section class="about-section">
         <span id="genAddress"></span>
         <form action="#">
-            <input type="text" id="search"placeholder="Search funding details by project name">
+            <input type="text" id="search" placeholder="Search funding details by project name">
             <button onclick=getFundings()>
                 <ion-icon name="search-outline"></ion-icon>
             </button>

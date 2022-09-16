@@ -359,7 +359,11 @@ async function connect() {
       signingMessage: "Please connect and sign wallet to get access",
     });
     await Moralis.enableWeb3();
-    document.getElementById("connect").textContent = user.get("ethAddress");
+    const
+      ethAddress = user.get("ethAddress"),
+      topText = ethAddress.slice(0, 4),
+      bottomText = ethAddress.slice(-6);
+    document.getElementById("connect").textContent = `${topText}...${bottomText}`;
   } else {
     await Moralis.User.logOut();
     document.getElementById("connect").textContent = "connect";
@@ -418,22 +422,22 @@ async function generateContract() {
   };
   let tx = await Moralis.executeFunction(option2);
   await tx.wait();
-  
+
   document.getElementById(
     "genAddress"
   ).innerHTML = `Contract Enabled, Uploading Meta data to IPFS `;
 
 
-  const image= await uploadImage();
+  const image = await uploadImage();
 
-  const ipfsLink= await uploadMeta(image,owner,amount,name,address)
-  const fundingInfo= Moralis.Object.extend('fundingInfo');
-  const fundCreated= new fundingInfo();
+  const ipfsLink = await uploadMeta(image, owner, amount, name, address);
+  const fundingInfo = Moralis.Object.extend('fundingInfo');
+  const fundCreated = new fundingInfo();
   fundCreated.save({
     owner: owner,
     projectName: name,
     ipfsHash: ipfsLink,
-  })
+  });
 
   document.getElementById(
     "genAddress"
@@ -547,15 +551,15 @@ async function uploadImage() {
   return file.ipfs();
 }
 
-async function uploadMeta(image,owner,amount,name,contract) {
-  const fName=document.getElementById("fName").value;
-  const lName= document.getElementById("lName").value;
-  const desc =document.getElementById("details").value;
-  const duration= document.getElementById("duration").value;
-  const extraInfo= document.getElementById("additionalInfo").value;
+async function uploadMeta(image, owner, amount, name, contract) {
+  const fName = document.getElementById("fName").value;
+  const lName = document.getElementById("lName").value;
+  const desc = document.getElementById("details").value;
+  const duration = document.getElementById("duration").value;
+  const extraInfo = document.getElementById("additionalInfo").value;
 
-  const metaData= {
-    "Creator Name": fName +" "+ lName,
+  const metaData = {
+    "Creator Name": fName + " " + lName,
     "Project Name": name,
     "Image": image,
     "Project Details": desc,
@@ -564,19 +568,19 @@ async function uploadMeta(image,owner,amount,name,contract) {
     "Project Owner": owner,
     "Project Duration": duration,
     "Contract Address": contract
-  }
-  const file= new Moralis.File("file.json",{base64 : btoa(JSON.stringify(metaData))})
-  await file.saveIPFS()
+  };
+  const file = new Moralis.File("file.json", { base64: btoa(JSON.stringify(metaData)) });
+  await file.saveIPFS();
 
   return file.ipfs();
 }
 
-async function getFundings(){
-  const name= document.getElementById("search").value;
-  const fundingInfo= Moralis.Object.extend('fundingInfo');
-  const fundQuery= new Moralis.Query("fundingInfo");
-  const result= await fundQuery.find("projectName", name)
-  const {projectName, ipfsHash, owner}= result[0].attributes
-  document.getElementById("mIframe").style.display='block';
-  document.getElementById("mIframe").src= ipfsHash;
+async function getFundings() {
+  const name = document.getElementById("search").value;
+  const fundingInfo = Moralis.Object.extend('fundingInfo');
+  const fundQuery = new Moralis.Query("fundingInfo");
+  const result = await fundQuery.find("projectName", name);
+  const { projectName, ipfsHash, owner } = result[0].attributes;
+  document.getElementById("mIframe").style.display = 'block';
+  document.getElementById("mIframe").src = ipfsHash;
 }

@@ -17,7 +17,7 @@
 <body>
 
     <main class="container">
-        <a href="../index.htm">
+        <a href="../../index.htm">
             <ion-icon name="close-circle"></ion-icon>
         </a>
         <h2>create funding</h2>
@@ -41,7 +41,7 @@
                 <label for="">project name</label>
                 <input id="name" type="text">
             </span>
-            
+
             <span>
                 <label for="">project Image</label>
                 <input id="fileInput" name="fileInput" type="file">
@@ -67,11 +67,9 @@
 
             <span>
                 <label for="">how much would you like to raise in USD</label>
-
-                <input id="amount"type="number">
+                <input id="amount" type="number">
                 <span>
                     USD to Polygon (matic)<img src="../images/polygon.svg" alt="">
-
                     <button class="convertbtn" onclick=convertUSD()>convert</button>
                 </span>
             </span>
@@ -90,10 +88,10 @@
         </div>
 
         <span id="genAddress"></span>
-        
+
         <button onclick=generateContract()> generate contract</button>
-        
-        
+
+
     </main>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
