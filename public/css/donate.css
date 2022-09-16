@@ -111,7 +111,7 @@ main>p {
 
 .spotlight-options>ul>li:hover {
     background-color: #86F673;
-    border: 3px solid #47C789;
+    /* border: 3px solid #47C789; */
 }
 
 .spotlight-image {

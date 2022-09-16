@@ -1,3 +1,63 @@
+@font-face {
+    font-family: 'Nippo-Variable';
+    src: url('../fonts/nippo/Nippo-Variable.woff2') format('woff2'),
+        url('../fonts/nippo/Nippo-Variable.woff') format('woff'),
+        url('../fonts/nippo/Nippo-Variable.ttf') format('truetype');
+    font-weight: 200 700;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nippo-Extralight';
+    src: url('../fonts/nippo/Nippo-Extralight.woff2') format('woff2'),
+        url('../fonts/nippo/Nippo-Extralight.woff') format('woff'),
+        url('../fonts/nippo/Nippo-Extralight.ttf') format('truetype');
+    font-weight: 200;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nippo-Light';
+    src: url('../fonts/nippo/Nippo-Light.woff2') format('woff2'),
+        url('../fonts/nippo/Nippo-Light.woff') format('woff'),
+        url('../fonts/nippo/Nippo-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nippo-Regular';
+    src: url('../fonts/nippo/Nippo-Regular.woff2') format('woff2'),
+        url('../fonts/nippo/Nippo-Regular.woff') format('woff'),
+        url('../fonts/nippo/Nippo-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nippo-Medium';
+    src: url('../fonts/nippo/Nippo-Medium.woff2') format('woff2'),
+        url('../fonts/nippo/Nippo-Medium.woff') format('woff'),
+        url('../fonts/nippo/Nippo-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nippo-Bold';
+    src: url('../fonts/nippo/Nippo-Bold.woff2') format('woff2'),
+        url('../fonts/nippo/Nippo-Bold.woff') format('woff'),
+        url('../fonts/nippo/Nippo-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-display: swap;
+    font-style: normal;
+}
+
 :root {
     --font-size: 18px;
     --mobile-font-size: 14px;
@@ -54,7 +114,7 @@ a {
 header {
     display: flex;
     justify-content: space-between;
-    padding: 20px 2%;
+    padding: 20px 5%;
     align-items: center;
 }
 
@@ -64,16 +124,14 @@ header {
     color: var(--green);
     cursor: pointer;
     font-weight: 800;
-    height: 30px;
-    width: 150px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
 .logo>div {
-    height: 25px;
-    width: 25px;
+    height: 30px;
+    width: 30px;
 }
 
 .logo>div>img {
@@ -263,14 +321,28 @@ nav>label>ion-icon {
     font-size: 1.5rem;
     font-weight: 600;
     text-transform: capitalize;
+    font-family: "Nippo-Medium";
+    white-space: wrap;
 }
 
-.spotlight-section>h3>span {
+
+.spotlight-section>h3>span:nth-of-type(1) {
     display: block;
     font-size: 1.8rem;
     text-transform: uppercase;
     font-weight: inherit;
     color: var(--green);
+    font-family: inherit;
+}
+
+.spotlight-section>h3>span:nth-of-type(2) {
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+}
+
+.spotlight-section>h3>span:nth-of-type(2)>img {
+    max-width: 100%;
 }
 
 .spotlight-section>h3>ion-icon {
@@ -299,7 +371,7 @@ nav>label>ion-icon {
 
 .spotlight-options>ul>li:hover {
     background-color: #86F673;
-    border: 3px solid #47C789;
+    /* border: 3px solid #47C789; */
 }
 
 .spotlight-image {
@@ -362,7 +434,7 @@ footer>p>a {
     }
 
     body {
-        max-width: 80%;
+        max-width: 70%;
         margin: 0 auto;
     }
 
