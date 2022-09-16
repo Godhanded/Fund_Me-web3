@@ -114,11 +114,6 @@ main>p {
     border: 3px solid #47C789;
 }
 
-/* .spotlight-options .tab-active {
-    background-color: #86F673;
-    border: 3px solid #47C789;
-} */
-
 .spotlight-image {
     overflow: scroll;
     overflow-y: hidden;
