@@ -138,7 +138,7 @@ async function viewInfo()
 
   result = `
   <h3>amount received: <span>${Moralis.Units.FromWei(balance)}</span></h3><br>
-  <h3>amount expecting: <span>${Morals.Units.FromWei(expected)}</span></h3><br>
+  <h3>amount expecting: <span>${Moralis.Units.FromWei(expected)}</span></h3><br>
   <h3>your funders: <span>${Moralis.Units.FromWei(funders)}</span></h3><br>
   `;
 
