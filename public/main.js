@@ -137,9 +137,9 @@ async function viewInfo()
   let funders = await Moralis.executeFunction(option3);
 
   result = `
-  <h3>amount received: <span>${Moralis.Units.FromWei(balance)}</span></h3><br>
-  <h3>amount expecting: <span>${Moralis.Units.FromWei(expected)}</span></h3><br>
-  <h3>your funders: <span>${Moralis.Units.FromWei(funders)}</span></h3><br>
+  <h3>amount received: <span>${Moralis.Units.FromWei(balance.toString())}</span></h3><br>
+  <h3>amount expecting: <span>${Moralis.Units.FromWei(expected.toString())}</span></h3><br>
+  <h3>your funders: <span>${funders}</span></h3><br>
   `;
 
   document.getElementById("result").innerHTML = result;
