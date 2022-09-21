@@ -86,7 +86,7 @@ A lot of fund raiser platforms on web2 are hooked with debit card and bank model
                                 }
     ```
                                 
-        The projects image/avatar is uploaded to IPFS through Moralis' gateway, the url is retrived and added to the Metadata which is also uploaded to IPFS. This to make it easy for fund raisers to share details about their funding, project, Cause ect.
+      The projects image/avatar is uploaded to IPFS through Moralis' gateway, the url is retrived and added to the Metadata which is also uploaded to IPFS. This to make it easy for fund raisers to share details about their funding, project, Cause ect.
    
 
    - **Lastly** IPFS is also used to retrive and View the Metadata of any fund raiser generated on our Platform, this is done by searching for the  projects name in the search bar, it looks for the IPFS url mapped to the name and retrieves the Metadata from IPFS through Moralis' gateway on our IFrame src. see [Retrieve Ipfs Metadata to Iframe](https://github.com/Godhanded/Fund_Me-web3/blob/main/public/main.js#L238)
