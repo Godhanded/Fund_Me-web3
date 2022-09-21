@@ -29,6 +29,8 @@ Create a fund raiser contract in seconds and raise funds for your event’s,proj
 ## Important/Live Hosted Project Links
 - **Hosted URL** > https://fundmeweb3.on.fleek.co
 
+- **URl using Fleeks' IPFS gateway** > https://ipfs.fleek.co/ipfs/QmYzCYWA1uM8dLcZwdcyJotaWQ8dmLw2hdwUXzPuX7L3Wy/
+
 - **Github** > https://github.com/Godhanded/Fund_Me-web3
 
 - **Contract** > [0x9A45928dfD2c612137F0EC5E2164A9284534113d](https://mumbai.polygonscan.com/address/0x9A45928dfD2c612137F0EC5E2164A9284534113d#code)
@@ -71,7 +73,7 @@ A lot of fund raiser platforms on web2 are hooked with debit card and bank model
 
 - ### **IPFS**
   We used IPFS in **Third FUND** for a number of things,
-  - **Firstly** the Frontend for This project is hosted on IPFS **through Fleek** https://fundmeweb3.on.fleek.co .
+  - **Firstly** the Frontend for This project is hosted on IPFS **through Fleek** https://fundmeweb3.on.fleek.co . you can verify through IPFS here https://ipfs.fleek.co/ipfs/QmYzCYWA1uM8dLcZwdcyJotaWQ8dmLw2hdwUXzPuX7L3Wy/
 
   - **Secondly** IPFS came into play again after a user creates a fund raising contract through our platform, The Meta data such as; *see* [Upload Metadata Function](https://github.com/Godhanded/Fund_Me-web3/blob/main/public/main.js#L212),  [Upload image Function](https://github.com/Godhanded/Fund_Me-web3/blob/main/public/main.js#L204)
 
