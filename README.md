@@ -45,7 +45,7 @@ A lot of fund raiser platforms on web2 are hooked with debit card and bank model
     - [Twitter, @Godand](https://twitter.com/Godand_)
     - [Github, @Godhanded](https://github.com/Godhanded) <br>
 - Miraclemenikelechi(Front-End dev)
-    - [Twitter, @](https://twitter.com/)
+    - [Twitter, @trinityandtruth](https://twitter.com/trinityandtruth?s=20&t=ZIj6s8ImLoDYIqEpV-qfKw)
     - [Github, @miraclemenikelechi](https://github.com/miraclemenikelechi)<br>
 - Nuelvations(Product Manager)
     - [Twitter, @defiprince_](https://twitter.com/defiprince_)
