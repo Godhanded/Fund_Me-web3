@@ -382,6 +382,15 @@ nav>label>ion-icon {
 
 .option-images {
     padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.option-images>img {
+    object-fit: cover;
+    width: 400px;
+    height: 200px;
 }
 
 .spotlight-section>button {
