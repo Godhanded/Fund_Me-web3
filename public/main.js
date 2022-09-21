@@ -11,7 +11,8 @@ const check = () => {
     alert("Sorry a browser wallet is required before you can use this service");
 };
 
-async function connect() {
+async function connect() 
+{
   let user = await Moralis.User.current();
 
   if (!user) {
@@ -31,7 +32,8 @@ async function connect() {
   }
 }
 
-async function convertUSD() {
+async function convertUSD() 
+{
   await Moralis.enableWeb3();
   let amount = document.getElementById("amount").value;
   let option = {
@@ -48,7 +50,8 @@ async function convertUSD() {
   document.getElementById("amount").value = (result / 10 ** 18).toString();
 }
 
-async function generateContract() {
+async function generateContract() 
+{
   let owner = document.getElementById("owner").value;
   let amount = document.getElementById("amount").value;
   let newAmount = Moralis.Units.ETH(amount);
@@ -102,7 +105,8 @@ async function generateContract() {
   ).innerHTML = `${_name}, generated and enabled at: ${address} ; ipfs Link: ${ipfsLink}`;
 }
 
-async function viewInfo() {
+async function viewInfo() 
+{
   await Moralis.enableWeb3();
   let address = document.getElementById("detail").value;
   Abi = fundAbi;
@@ -120,8 +124,6 @@ async function viewInfo() {
     contractAddress: address,
     functionName: "getAmountNeeded",
     abi: Abi,
-    // params: {
-    // },
   };
 
   let expected = await Moralis.executeFunction(option2);
@@ -130,8 +132,6 @@ async function viewInfo() {
     contractAddress: address,
     functionName: "getFunders",
     abi: Abi,
-    // params: {
-    // },
   };
 
   let funders = await Moralis.executeFunction(option3);
@@ -145,7 +145,8 @@ async function viewInfo() {
   document.getElementById("result").innerHTML = result;
 }
 
-async function withdraw() {
+async function withdraw() 
+{
   let contract = document.getElementById("withdrawAddr").value;
   let amount = document.getElementById("withdrawAmount").value;
 
@@ -201,7 +202,8 @@ async function withdraw() {
   document.getElementById("withdraw-section").innerHTML = html;
 }
 
-async function uploadImage() {
+async function uploadImage() 
+{
   const data = fileInput.files[0];
   const file = new Moralis.File(data.name, data);
   await file.saveIPFS();
@@ -209,7 +211,8 @@ async function uploadImage() {
   return file.ipfs();
 }
 
-async function uploadMeta(image, owner, amount, name, contract) {
+async function uploadMeta(image, owner, amount, name, contract) 
+{
   const fName = document.getElementById("fName").value;
   const lName = document.getElementById("lName").value;
   const desc = document.getElementById("details").value;
@@ -235,7 +238,8 @@ async function uploadMeta(image, owner, amount, name, contract) {
   return file.ipfs();
 }
 
-async function getFundings() {
+async function getFundings() 
+{
   const name = document.getElementById("search").value;
   const fundingInfo = Moralis.Object.extend("fundingInfo");
   const fundQuery = new Moralis.Query("fundingInfo");

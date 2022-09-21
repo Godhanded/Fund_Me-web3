@@ -2,7 +2,7 @@
 
 > ## Table of Contents
 - [Project Details](#project-description)
-- [Problem Stateement](#problem-statement)
+- [Problem Statement](#problem-statement)
 - [Solution](#solution)
 - [Technologies Used](#technologies-used)
     - [IPFS](#ipfs)
