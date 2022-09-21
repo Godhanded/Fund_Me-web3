@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/moralis-v1@latest/dist/moralis.js"></script>
+    <script type="text/javascript" src="../abis.js" ></script>
     <title>Withdraw | Track Funding</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +16,7 @@
 </head>
 
 <body>
-    <a href="../../index.htm">
+    <a href="../index.html">
         <ion-icon name="close-circle"></ion-icon>
     </a>
 
@@ -26,7 +27,8 @@
             <div>
                 <h3>Enter contract address</h3>
                 <p>[contract address generated when creating funding]</p>
-                <input id="withdrawAmount" placeholder="Amount in Matic">
+                <input id="withdrawAddr" placeholder="Your contract Address">
+                <input id="withdrawAmount" placeholder="Amount in Matic" type="number">
                 <a onclick=withdraw()><button>End Funding and Withdraw</button></a>
                 <span id="withdrawResult"></span>
             </div>
