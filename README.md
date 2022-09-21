@@ -13,6 +13,7 @@
 - [Important Live Links](#importantlive-hosted-project-links)
 - [Team Members](#contributors)
 - [Project Features](#project-features)
+- [Features We Couldn't Complete](#features-we-couldnt-complete)
 - [Future Project Plans](#future-project-plans)
 
 
@@ -65,8 +66,8 @@ A lot of fund raiser platforms on web2 are hooked with debit card and bank model
 
 - ### **Solidity smart contracts**
     Third fund makes use of three smart contracts see [3 contracts](https://github.com/Godhanded/Fund_Me-web3/tree/main/contracts)
-    - **FundFactory** each fund raiser is a new dedicated contract for said fund raiser the Fund Factory handles this by generating a new contract based on the information provided by the user when they create a new fundraiser , it also receives the commission from all child contracts when the users decide to withdraw their funds that have been raised. see [contract here](https://github.com/Godhanded/Fund_Me-web3/blob/main/contracts/fundMeFactory.sol)
-    - **GoFundmechild** this is the new contract that is generated for each user when ever they create a fundraiser , it handles tracking of who donated, the amount donated, total money in the contract , withdrawal and owner of the contract. see [contract here](https://github.com/Godhanded/Fund_Me-web3/blob/main/contracts/goFundMe.sol)
+    - **FundFactory** each fund raiser is a new dedicated contract for said fund raiser the Fund Factory handles this by generating a new contract based on the information provided by the user when they create a new fundraiser , it also receives the commission from all child contracts when the users decide to withdraw their funds that have been raised. Donations are made to the contract address of the child that was generted.  see [contract here](https://github.com/Godhanded/Fund_Me-web3/blob/main/contracts/fundMeFactory.sol)
+    - **GoFundmechild** this is the new contract that is generated for each user when ever they create a fundraiser , it handles tracking of who donated, the amount donated, total money in the contract , withdrawal and owner of the contract. Donations are alo made to this Contracts Address .see [contract here](https://github.com/Godhanded/Fund_Me-web3/blob/main/contracts/goFundMe.sol)
 
 - ### **IPFS**
   We used IPFS in **Third FUND** for a number of things,
@@ -89,7 +90,7 @@ A lot of fund raiser platforms on web2 are hooked with debit card and bank model
       The projects image/avatar is uploaded to IPFS through Moralis' gateway, the url is retrived and added to the Metadata which is also uploaded to IPFS. This to make it easy for fund raisers to share details about their funding, project, Cause ect.
    
 
-   - **Lastly** IPFS is also used to retrive and View the Metadata of any fund raiser generated on our Platform, this is done by searching for the  projects name in the search bar, it looks for the IPFS url mapped to the name and retrieves the Metadata from IPFS through Moralis' gateway on our IFrame src. see [Retrieve Ipfs Metadata to Iframe](https://github.com/Godhanded/Fund_Me-web3/blob/main/public/main.js#L238)
+   - **Lastly** IPFS is also used to retrive and View the Metadata of any fund raiser generated on our Platform, this is done by searching for the  projects name in the search bar, it looks for the IPFS url mapped to the name and retrieves the Metadata from IPFS through Moralis' gateway on our IFrame src. Donations are made by sending Matic to the Contract address generated for the user for their project. see [Retrieve Ipfs Metadata to Iframe](https://github.com/Godhanded/Fund_Me-web3/blob/main/public/main.js#L238)
 
 - ### **Moralis**
     - The Moralis vanilla js SDK was used in this project for all smart contract calls, see [one of the functions](https://github.com/Godhanded/Fund_Me-web3/blob/main/public/main.js#L169) 
@@ -102,8 +103,10 @@ A lot of fund raiser platforms on web2 are hooked with debit card and bank model
     - Chain link was very important we needed a way for users to type the amount the want to rais in USD for an easier user experience, but the contract works with wei or e^18. so we usd chainlink data feeds to always convert the entered amount in USD to its equivalent value in Matic Wei see [contract code](https://github.com/Godhanded/Fund_Me-web3/blob/main/contracts/fundMeFactory.sol#L57) , [front end call](https://github.com/Godhanded/Fund_Me-web3/blob/main/public/main.js#L34)
 
 - ### **Polygon Mumbai Testnet**
-    - The three smart contracts where deployed and verified on the Polygon Mumbai Testnet
+    - The three smart contracts where deployed and verified on the Polygon Mumbai Testnet.
     see [Contract here](https://mumbai.polygonscan.com/address/0x9A45928dfD2c612137F0EC5E2164A9284534113d#code)
+
+    - Donations are made by sending Matic to the Contract address generated for the user for their project. 
 
 
 
@@ -120,6 +123,12 @@ Our platform has swift ux, and all transactions are recorded on our public ledge
 - Find Fundraisers
 - Donate to Fundraisers
 - uses IPFS, Chainlink, Polygon,Moralis
+
+
+#
+## Features we couldn't complete
+- we could not complete one feature of ThirdFund
+    >we wanted create a donations page where all projects currently undergoin funding would be shown, then any body can see them, pick one they like and easily make a donation to the cause from our Site. currently the only way to make do ations is by sending Matic to the contract address thats gnerated for each Cause or Project.
 
 
 #
