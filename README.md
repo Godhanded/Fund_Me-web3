@@ -142,3 +142,17 @@ compatibility of thirdfund to all networks.
 
 - Improved algorithm and analytics that provides you with details like wallet addresses of your funders,time and location . 
 - Backup wallet; incase you happen to loose your device or so,your backup wallet helps you get acess to your fundraiser page without you loosing a coin .
+
+
+#
+## UI Snapshots
+
+![Screenshot from 2022-09-24 07-54-11](https://user-images.githubusercontent.com/101066095/192096778-10185645-45dd-4f3f-a657-360ed00df239.png) <hr>
+
+![Screenshot from 2022-09-24 07-54-22](https://user-images.githubusercontent.com/101066095/192096795-6b30b52f-c215-421d-9526-50c70648d91a.png) <hr>
+
+![Screenshot from 2022-09-24 07-54-48](https://user-images.githubusercontent.com/101066095/192096801-5c2718ec-412f-48b5-bcea-f409f5aa8c51.png) <hr>
+
+![Screenshot from 2022-09-24 07-54-27](https://user-images.githubusercontent.com/101066095/192096831-defce70f-7e06-4bc5-bf25-d5af22056d6c.png)
+
+
